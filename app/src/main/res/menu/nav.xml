@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Recipes"
+        android:icon="@drawable/ic_local_dining_black_24dp"
+        app:showAsAction="always"
+        android:id="@+id/frag1"
+        />
+
+
+    <item
+        android:title="My Favourites"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        app:showAsAction="always"
+        android:id="@+id/frag2"
+        />
+
+
+    <item
+        android:title="Friends"
+        android:icon="@drawable/ic_people_outline_black_24dp"
+        app:showAsAction="always"
+       android:id="@+id/frag3"
+        />
+
+</menu>
