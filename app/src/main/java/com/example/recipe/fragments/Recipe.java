@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.recipe.Adapter.RecipeAdapter;
 import com.example.recipe.MainActivity;
@@ -35,11 +36,13 @@ public class Recipe extends Fragment {
     private Context context;
     private RecipeAdapter recipeAdapter;
     private static final String TAG = "d99";
+    ProgressBar progressBar;
 
     @Override
     public void onAttach(final Context context) {
         super.onAttach(context);
         this.context = context;
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(MainActivity.BASE_URL)
@@ -80,6 +83,9 @@ public class Recipe extends Fragment {
         View v = LayoutInflater.from(container.getContext())
                 .inflate(R.layout.recipe_f1, container, false);
 
+        this.progressBar = v.findViewById(R.id.progress_bar);
+
+
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
 
         //linear
@@ -119,6 +125,7 @@ public class Recipe extends Fragment {
 
         Log.i(TAG, recipeItems.size() + "");
         this.recipeAdapter.update(recipeItems);
+        this.progressBar.setVisibility(View.GONE);
     }
 
 }

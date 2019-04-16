@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="5dp"
-    android:layout_margin="30sp"
+    android:layout_marginTop="30sp"
+    android:layout_marginLeft="30sp"
+    android:layout_marginRight="30sp"
+    android:clickable="true"
+    android:foreground="?android:selectableItemBackground"
+    android:elevation="10sp"
     >
 
     <LinearLayout

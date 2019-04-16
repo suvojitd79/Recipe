@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/media_frame"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/media_height"
+            android:layout_below="@id/toolbar">
+
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/media"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ProgressBar
+                android:id="@+id/media_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:indeterminateTint="@color/toolbar_bg" />
+
+        </FrameLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/video_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/video_recycler_view_height"
+            android:layout_below="@+id/media_frame" />
+
+        <TextView
+            android:id="@+id/video_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/video_recyclerView"
+            android:padding="20sp"
+            android:text="@string/default_vid_description"
+            android:textSize="20sp"
+            />
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
