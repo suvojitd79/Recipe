@@ -4,4 +4,11 @@
     <string name="toolbar_title">Miriam\'s Recipes</string>
 
     <string name="default_vid_description">Currently, No Video is playing</string>
+
+
+    <string name="quantity">Quantity : </string>
+    <string name="measure">Measure : </string>
+    <string name="ingredient">Ingredient : </string>
+
+    <string name="error_msg">Something went wrong!</string>
 </resources>

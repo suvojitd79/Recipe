@@ -116,7 +116,7 @@ public class Vid_1 extends Fragment {
                 = ExoPlayerFactory.newSimpleInstance(context, trackSelector);
 
         playerView.setPlayer(simpleExoPlayer);
-        playerView.setUseController(true);
+        playerView.setUseController(false);
 
 
         simpleExoPlayer.addListener(new Player.EventListener() {

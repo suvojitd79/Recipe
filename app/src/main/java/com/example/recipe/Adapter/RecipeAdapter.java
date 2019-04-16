@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.recipe.MainActivity;
@@ -74,7 +75,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private TextView recipe_video_click;
         private ImageButton recipe_fav, recipe_share;
         private Context context = RecipeAdapter.context;
-
+        private ProgressBar loading;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,7 +86,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             recipe_video_click = itemView.findViewById(R.id.recipe_video_click);
             recipe_fav = itemView.findViewById(R.id.recipe_fav);
             recipe_share = itemView.findViewById(R.id.recipe_share);
-
+            loading = itemView.findViewById(R.id.loading);
             //click listners
             recipe_video_click.setOnClickListener(this);
             recipe_fav.setOnClickListener(this);
@@ -110,7 +111,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             if (v.getId() == R.id.recipe_video_click) {
 
-                recipeClick.show_details(getAdapterPosition());
+                this.loading.setVisibility(View.VISIBLE);
+                recipeClick.show_details(getAdapterPosition(),loading);
 
             } else if (v.getId() == R.id.recipe_fav) {
 

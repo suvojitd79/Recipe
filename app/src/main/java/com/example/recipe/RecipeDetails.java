@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.recipe.Adapter.RecipeVideoAdapter;
@@ -32,6 +33,11 @@ public class RecipeDetails extends AppCompatActivity implements View.OnClickList
     BottomNavigationView bottomNavigationView;
     private Vid_1 vid_1;
     private Ingre_1 ingre_1;
+
+    @BindView(R.id.f1)
+    FrameLayout f1;
+    @BindView(R.id.f2)
+    FrameLayout f2;
 
     public Response getResponse() {
         return response;
@@ -71,10 +77,15 @@ public class RecipeDetails extends AppCompatActivity implements View.OnClickList
             vid_1 = new Vid_1();
             ingre_1 = new Ingre_1();
 
-                //default one
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frag,vid_1).commit();
 
+
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.f1,vid_1).commit();
+
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.f2,ingre_1).commit();
+            f1.setVisibility(View.VISIBLE);
+            f2.setVisibility(View.GONE);
 
         }
 
@@ -92,16 +103,17 @@ public class RecipeDetails extends AppCompatActivity implements View.OnClickList
 
         if(menuItem.getItemId()==R.id.vid){
 
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frag,vid_1).commit();
+            f1.setVisibility(View.VISIBLE);
+            f2.setVisibility(View.GONE);
+
 
         }
 
         else if(menuItem.getItemId()==R.id.ing){
 
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frag,ingre_1).commit();
-
+            f1.setVisibility(View.GONE);
+            f2.setVisibility(View.VISIBLE);
+            ingre_1.update(response.getIngredients());
         }
 
         return true;
