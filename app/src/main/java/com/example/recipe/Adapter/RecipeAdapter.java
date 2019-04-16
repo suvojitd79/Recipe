@@ -22,16 +22,21 @@ import com.example.recipe.RecipeClick;
 import com.example.recipe.fragments.Recipe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<RecipeItem> recipeItems;
     private static Context context;
     private RecipeClick recipeClick;
+    private HashMap<Boolean,Fav> favs;
 
     public RecipeAdapter(Context context) {
         this.context = context;
         this.recipeClick = (MainActivity)context;
+        favs = new HashMap<>();
+        favs.put(false,new Fav(R.drawable.ic_favorite_black_24dp,"Removed from Favourites"));
+        favs.put(true,new Fav(R.drawable.ic_favorite_red_24dp,"Marked as Favourite"));
     }
 
     public void update(ArrayList<RecipeItem> recipeItems) {
@@ -76,6 +81,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private ImageButton recipe_fav, recipe_share;
         private Context context = RecipeAdapter.context;
         private ProgressBar loading;
+        private Boolean isFav = false;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -116,7 +122,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             } else if (v.getId() == R.id.recipe_fav) {
 
-                recipeClick.mark_as_fav(getAdapterPosition());
+                isFav = !isFav;
+                recipe_fav.setImageDrawable(context.getDrawable(favs.get(isFav).getId()));
+                recipeClick.mark_as_fav(getAdapterPosition(),favs.get(isFav).getMessage());
 
             } else if (v.getId() == R.id.recipe_share) {
 
@@ -127,6 +135,26 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
 
 
+    }
+
+
+    class Fav{
+
+        Integer id; //<----id of drawable
+        String message;
+
+        public Fav(Integer id, String message) {
+            this.id = id;
+            this.message = message;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public String getMessage() {
+            return message;
+        }
     }
 
 }

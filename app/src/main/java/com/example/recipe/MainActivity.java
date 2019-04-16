@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String TAG = "d99";
     public static final String BASE_URL = "https://d17h27t6h515a5.cloudfront.net/";
     private FragmentManager fragmentManager;
-    public static List<Response> responses;
+    private List<Response> responses;
 
 
     public void setResponses(List<Response> responses) {
@@ -148,16 +148,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     @Override
-    public void mark_as_fav(int position) {
+    public void mark_as_fav(int position,String message) {
 
-        Toast.makeText(this,String.valueOf(position),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void share(int position) {
 
-        Toast.makeText(this,String.valueOf(position),Toast.LENGTH_SHORT).show();
-
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT,responses.get(position).getName());
+        startActivity(intent);
     }
 
 }

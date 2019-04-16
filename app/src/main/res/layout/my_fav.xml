@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Friends"
+        android:text="My Fav"
         android:gravity="center_vertical|center_horizontal"
         />
 </android.support.constraint.ConstraintLayout>
